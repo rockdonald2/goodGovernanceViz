@@ -47,7 +47,7 @@
             axisFontSize = '1.5rem';
         }
 
-        if (window.innerWidth <= 425) {
+        if (window.innerWidth <= 725) {
             axisFontSize = '1rem';
             xY = 10;
             yY = -2;
@@ -131,7 +131,7 @@
             dy = '.25em';
         }
 
-        if (window.innerWidth <= 425) {
+        if (window.innerWidth <= 475) {
             legendPoz.top = height * 0.85;
             legendPoz.left = width * 0.55;
             legendFontSize = '1rem';
@@ -191,7 +191,7 @@
             innerMargins.top = margin.top + 10;
         }
 
-        if (window.innerWidth <= 425) {
+        if (window.innerWidth <= 725) {
             innerFontSize = '1rem';
             innerMargins.left = margin.left + 5;
             innerMargins.top = margin.top;
@@ -283,16 +283,16 @@
 
         const bubbles = chartHolder.selectAll('.bubble').data(data);
         bubbles.enter().append('g')
-            .on('mouseenter', function (d) {
+            .on('mouseenter touchstart', function (d) {
                 d3.select(this).raise();
                 d3.select(this).select('.bubble#' + d.Code).transition().attr('opacity', fullOpacity).attr('r', radius * 1.5);
                 d3.select(this).select('.label#' + d.Code).transition().style('font-size', fullFontSize);
-            })
-            .on('mousemove', function (d) {
+
                 tooltip.select('.tooltip--heading').html(d.Country).style('background-color', colorScale(d.Size));
                 tooltip.select('.tooltip--hdi__score').html(d.HDI);
                 tooltip.select('.tooltip--gov__score').html(d.GOV.toFixed(3));
-
+            })
+            .on('mousemove touchstart', function (d) {
                 if (window.innerWidth <= 1024) {
                     if (d3.event.pageX <= width * 0.25) {
                         tooltip.style('left', (d3.event.pageX - parseInt(tooltip.style('width')) / 2 + 50) + 'px');
@@ -307,7 +307,7 @@
                     tooltip.style('top', (d3.event.pageY + 20) + 'px');
                 }
             })
-            .on('mouseleave', function (d) {
+            .on('mouseleave touchend', function (d) {
                 d3.select(this).select('.bubble#' + d.Code).transition().attr('opacity', halfOpacity).attr('r', radius);
                 d3.select(this).select('.label#' + d.Code).transition().style('font-size', halfFontSize);
                 tooltip.style('left', '-9999px');

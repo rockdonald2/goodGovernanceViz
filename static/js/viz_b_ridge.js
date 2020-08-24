@@ -46,6 +46,7 @@
 
         /* general selectors and dimensions */
         const chartContainer = d3.select('#psRidge');
+        /* idk, why they're a little bit off */
         const width = viz.calculateWidth(chartContainer, margin);
         const height = viz.calculateHeight(chartContainer, margin) - 6;
 
@@ -145,7 +146,7 @@
         /* general selectors and dimensions */
         const chartContainer = d3.select('#frRidge');
         const width = viz.calculateWidth(chartContainer, margin);
-        const height = viz.calculateHeight(chartContainer, margin);
+        const height = viz.calculateHeight(chartContainer, margin) - 4;
 
         /* svg and holder */
         const svg = viz.makeSvg(chartContainer, width, height, margin);

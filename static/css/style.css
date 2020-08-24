@@ -132,9 +132,9 @@ body > div.overlay {
         grid-template-columns: 1fr;
         grid-template-rows: 50% 25% 25%;
         margin-top: 2.5rem; } }
-    @media screen and (max-width: 425px) {
+    @media screen and (max-width: 725px) {
       .chart--right {
-        grid-template-rows: 30% 33% 33%; } }
+        grid-template-rows: 30% 35% 35%; } }
   .chart--bottom {
     grid-area: b;
     display: grid;

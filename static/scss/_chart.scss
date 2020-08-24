@@ -59,8 +59,8 @@
             margin-top: 2.5rem;
         }
 
-        @include responsive(425px) {
-            grid-template-rows: 30% 33% 33%;
+        @include responsive(725px) {
+            grid-template-rows: 30% 35% 35%;
         }
     }
 

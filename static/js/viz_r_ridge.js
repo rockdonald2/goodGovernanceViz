@@ -12,6 +12,11 @@
     /* scales */
     /* y-axis for height-effect*/
     const scaleGroup = d3.scaleBand().domain(viz.groups).paddingInner(1);
+    let maxHeight = 0;
+
+    if (window.innerWidth <= 725) {
+        maxHeight = 35;
+    }
 
     function calculateDifferences (data, firstYear, secondYear) {
         const differences = [];
@@ -65,7 +70,7 @@
         /* scales */
         const scaleChange = d3.scaleLinear().domain([-0.06, 0.17]).range([0, width]);
         /* y-axis for densities */
-        const scaleDensity = d3.scaleLinear().domain([0, 10]).range([height / 1.25, 0]);
+        const scaleDensity = d3.scaleLinear().domain([0, 10]).range([height / 1.25, maxHeight]);
         scaleGroup.range([height / 2, 0]);
 
         const axis = viz.makeAxis(svg, width, height, margin, scaleChange, [-0.05, 0.00, 0.05, 0.10, 0.15], 'Change in HDI, 2018-2000', d3.format('.2f'));
@@ -123,7 +128,7 @@
         /* scales */
         const scaleChange = d3.scaleLinear().domain([-1.25, 1.25]).range([0, width]);
         /* y-scale for densities */
-        const scaleDensity = d3.scaleLinear().domain([0, .95]).range([height / 1.25, 0]);
+        const scaleDensity = d3.scaleLinear().domain([0, .95]).range([height / 1.25, maxHeight]);
 
         const axis = viz.makeAxis(svg, width, height, margin, scaleChange, [-0.5, 0, 0.5], 'Change in Gov. Effectiveness, 2018-2000', d3.format('.2f'));
         const title = viz.makeTitle(svg, width, height, margin, 'and have even lost some ground.');

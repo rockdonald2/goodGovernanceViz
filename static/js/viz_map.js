@@ -64,15 +64,15 @@
 
         data.forEach((d) => {
             chartHolder.select('.country#' + d.Code).attr('fill', colorScale(d.Size))
-                .on('mouseenter', function () {
+                .on('mouseenter touchstart', function () {
                     tooltip.select('.tooltip--heading').html(d.Country).style('background-color', colorScale(d.Size));
                     tooltip.select('.tooltip--info__value').html(d3.format('.2s')(d.Value));
                 })
-                .on('mousemove', function () {
+                .on('mousemove touchstart', function () {
                     tooltip.style('left', (d3.event.pageX - parseInt(tooltip.style('width')) / 2) + 'px');
                     tooltip.style('top', (d3.event.pageY + 50) + 'px');
                 })
-                .on('mouseleave', function () {
+                .on('mouseleave touchend', function () {
                     tooltip.style('left', '-9999px');
                 });
         });
