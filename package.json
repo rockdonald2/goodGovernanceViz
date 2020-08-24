@@ -1,0 +1,26 @@
+{
+  "name": "goodgovernanceviz",
+  "version": "1.0.0",
+  "description": "A visualization based on Dimiter Toshkov's award-winning static visualization, made with D3.js.",
+  "main": "index.js",
+  "scripts": {
+    "server": "live-server",
+    "watch:sass": "node-sass static/scss/main.scss static/css/style.css -w",
+    "start": "npm-run-all --parallel server watch:sass"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rockdonald2/goodGovernanceViz.git"
+  },
+  "author": "Lukács Zsolt, based on Dimiter Toshkov's work.",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/rockdonald2/goodGovernanceViz/issues"
+  },
+  "homepage": "https://github.com/rockdonald2/goodGovernanceViz#readme",
+  "devDependencies": {
+    "live-server": "^1.2.1",
+    "node-sass": "^4.14.1",
+    "npm-run-all": "^4.1.5"
+  }
+}

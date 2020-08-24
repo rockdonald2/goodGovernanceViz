@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <script>
+        window.onbeforeunload = function () {
+            window.scrollTo(0, 0);
+        };
+    </script>
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport"
+            content="width=device-width, initial-scale=1.0">
+        <title>Good Governance Visualization</title>
+        <link rel="icon"
+            href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22
+                viewBox=%220
+                0
+                100
+                100%22><text y=%22.9em%22
+                    font-size=%2290%22>👁‍🗨</text></svg>">
+        <link rel="stylesheet"
+            href="static/css/style.css">
+        <link rel="stylesheet"
+            href="static/vendor/normalize.css">
+    </head>
+
+    <body style="hidden">
+        <div class="overlay show">
+            <div class="spinner"></div>
+            <p>Currently fetching data...</p>
+        </div>
+
+        <header class="header">
+            <h1 class="header--heading">
+                Small States Can Be Big Players in Development and Good Governance
+            </h1>
+        </header>
+        <section class="chart">
+            <div id="scatterPlot"
+                class="chart--scatterplot">
+                <div class="tooltip">
+                    <h2 class="tooltip--heading"></h2>
+                    <div class="tooltip--hdi">
+                        <p>HDI Score</p>
+                        <p class="tooltip--hdi__score"></p>
+                    </div>
+                    <div class="tooltip--gov">
+                        <p>Gov. Effectiveness Score</p>
+                        <p class="tooltip--gov__score"></p>
+                    </div>
+                </div>
+            </div>
+            <div class="chart--right">
+                <div id="map"
+                    class="chart--right__map">
+                    <div class="tooltip">
+                        <h2 class="tooltip--heading"></h2>
+                        <div class="tooltip--info">
+                            <p>Population</p>
+                            <p class="tooltip--info__value"></p>
+                        </div>
+                    </div>
+                </div>
+                <div id="hdiRidge"
+                    class="chart--right__hdiRidge"></div>
+                <div id="govRidge"
+                    class="chart--right__govRidge"></div>
+            </div>
+            <div class="chart--bottom">
+                <p class="chart--bottom__text">These charts show the distribution densities of different variables by three groups
+                    based on state size.</p>
+                <div id="psRidge"
+                    class="chart--bottom__ps"></div>
+                <div id="corRidge"
+                    class="chart--bottom__cor"></div>
+                <div id="frRidge"
+                    class="chart--bottom__fr"></div>
+            </div>
+            <section class="data">
+                <p class="data--text">
+                    <span>Data: </span> World Bank, Worldwide Governance Indicators, Freedom House.
+                </p>
+            </section>
+            <footer class="footer">
+                <p class="footer--text">This visualization is purely based on <a
+                        href="http://www.dimiter.eu/Visualizations_files/WDVP.html"
+                        target="_blank"
+                        rel="noopener noreferrer">Dimiter Toshkov's <span>↗ &nbsp; </span></a>award-winning work and
+                        insights.</p>
+            </footer>
+        </section>
+
+        <!-- external libraries -->
+        <script src="https://d3js.org/d3.v4.min.js"
+            defer></script>
+        <script src="https://unpkg.com/topojson@3"
+            defer></script>
+        <script src="https://unpkg.com/simple-statistics@7.2.0/dist/simple-statistics.min.js"
+            defer></script>
+
+        <!-- scripts -->
+        <script src="static/js/viz_core.js"
+            defer></script>
+        <script src="static/js/viz_scatter.js"
+            defer></script>
+        <script src="static/js/viz_map.js"
+            defer></script>
+        <script src="static/js/viz_r_ridge.js"
+            defer></script>
+        <script src="static/js/viz_b_ridge.js"
+            defer></script>
+        <script src="static/js/viz_main.js"
+            defer></script>
+    </body>
+
+</html>

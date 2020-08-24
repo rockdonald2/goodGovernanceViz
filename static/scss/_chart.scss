@@ -1,0 +1,248 @@
+.chart {
+    width: 100%;
+    height: calc(100% - 9rem);
+    display: grid;
+    grid-template-columns: repeat(9, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    grid-template-areas:
+        "sp sp sp sp sp sp r r r"
+        "sp sp sp sp sp sp r r r"
+        "sp sp sp sp sp sp r r r"
+        "d b b b b b b b f";
+
+    @include responsive(1024px) {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: 85% 30% 30% 20%;
+        grid-template-areas:
+            "sp sp"
+            "r r"
+            "b b"
+            "d f";
+    }
+
+    @include responsive(768px) {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: 85% 125% 125% 20%;
+    }
+
+    @include responsive(425px) {
+        grid-template-rows: 100% 90% 90% 20%;
+    }
+
+    &--scatterplot {
+        grid-area: sp;
+    }
+
+    &--right {
+        grid-area: r;
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(3, 1fr);
+
+        &>div:nth-of-type(2) {
+            margin-bottom: 1rem;
+        }
+
+        @include responsive(1024px) {
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: 1fr;
+            margin-top: 1.5rem;
+
+            &>div:nth-of-type(2) {
+                margin-bottom: 0;
+            }
+        }
+
+        @include responsive(768px) {
+            grid-template-columns: 1fr;
+            grid-template-rows: 50% 25% 25%;
+            margin-top: 2.5rem;
+        }
+
+        @include responsive(425px) {
+            grid-template-rows: 30% 33% 33%;
+        }
+    }
+
+    &--bottom {
+        grid-area: b;
+        display: grid;
+        grid-template-rows: 1fr;
+        grid-template-columns: repeat(7, 1fr);
+        align-items: center;
+        margin-top: 1.5rem;
+
+        &__text {
+            grid-column: 1 / 2;
+            display: inline-block;
+            font-size: 1.5rem;
+            text-align: justify;
+
+            @include responsive(1280px) {
+                font-size: 1.2rem;
+            }
+
+            @include responsive(768px) {
+                text-align: center;
+                font-size: 1.4rem;
+                max-width: 60%;
+                justify-self: center;
+            }
+
+            @include responsive(375px) {
+                max-width: 90%;
+            }
+        }
+
+        &__ps,
+        &__cor,
+        &__fr {
+            height: 100%;
+        }
+
+        &__ps {
+            grid-column: 2 / 4;
+        }
+
+        &__cor {
+            grid-column: 4 / 6;
+        }
+
+        &__fr {
+            grid-column: 6 / -1;
+        }
+
+        @include responsive(768px) {
+            grid-template-columns: 1fr;
+            grid-template-rows: 10% 30% 30% 30%;
+            margin-top: 2.5rem;
+
+            &__ps,
+            &__cor,
+            &__fr {
+                grid-column: unset;
+            }
+        }
+    }
+}
+
+.tooltip {
+    position: absolute;
+    left: -9999px;
+    box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.034),
+        0 6.7px 5.3px rgba(0, 0, 0, 0.048),
+        0 12.5px 10px rgba(0, 0, 0, 0.06),
+        0 22.3px 17.9px rgba(0, 0, 0, 0.072),
+        0 41.8px 33.4px rgba(0, 0, 0, 0.086),
+        0 100px 80px rgba(0, 0, 0, 0.12);
+    pointer-events: none;
+    background-color: #FAFAFA;
+    z-index: 2;
+
+    &--heading {
+        padding: 1rem .75rem;
+
+        @include responsive(375px) {
+            padding: 0.5rem 0.25rem;
+        }
+    }
+
+    &--hdi,
+    &--gov,
+    &--info {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        p {
+            font-size: 1.4rem;
+
+            @include responsive(1280px) {
+                font-size: 1.1rem;
+            }
+
+            @include responsive(425px) {
+                font-size: .9rem;
+            }
+        }
+
+        p:nth-of-type(1) {
+            background-color: #121212;
+            color: #FAFAFA;
+            text-transform: uppercase;
+        }
+    }
+
+    &--hdi,
+    &--gov {
+        p {
+            padding: .75rem;
+
+            @include responsive(375px) {
+                padding: 0.25rem;
+            }
+        }
+
+        &__score {
+            font-weight: 700;
+        }
+    }
+
+    &--info {
+        font-size: 1.4rem;
+
+        p {
+            padding: 1rem;
+
+            @include responsive(375px) {
+                padding: 0.5rem;
+            }
+        }
+
+        @include responsive(1280px) {
+            font-size: 1.1rem;
+        }
+
+        @include responsive(425px) {
+            font-size: .9rem;
+        }
+    }
+}
+
+#scatterPlot {
+    .tooltip {
+        width: 22.5rem;
+
+        @include responsive(768px) {
+            width: 17rem;
+        }
+
+        @include responsive(425px) {
+            width: 15rem;
+        }
+    }
+}
+
+#map {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .tooltip {
+        width: 16rem;
+
+        &--info {
+            p:nth-of-type(2) {
+                padding: .5rem;
+            }
+        }
+
+        @include responsive(768px) {
+            width: 13rem;
+        }
+
+        @include responsive(425px) {
+            width: 11rem;
+        }
+    }
+}

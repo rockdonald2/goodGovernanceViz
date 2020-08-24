@@ -1,0 +1,64 @@
+.footer,
+.data {
+    display: flex;
+    align-items: center;
+}
+
+.footer {
+    grid-area: f;
+
+    &--text {
+        font-size: 1.4rem;
+        text-align: justify;
+
+        a {
+            text-decoration: none;
+            color: #121212;
+            font-weight: 700;
+
+            span {
+                display: inline-block;
+                transition: all .25s;
+            }
+
+            &:hover {
+                span {
+                    transform: translateX(.25rem);
+                }
+            }
+        }
+
+        @include responsive(1280px) {
+            font-size: 1.2rem;
+        }
+    }
+
+    @include responsive(1024px) {
+        margin-left: 1rem;
+    }
+}
+
+.data {
+    grid-area: d;
+    margin-right: 2rem;
+    opacity: .75;
+
+    &--text {
+        font-size: 1rem;
+        text-align: left;
+
+        span {
+            font-weight: bold;
+            color: #E84E4E;
+            display: block;
+        }
+
+        @include responsive(768px) {
+            font-size: 1.2rem;
+        }
+    }
+
+    @include responsive(1024px) {
+        margin-right: 1rem;
+    }
+}
