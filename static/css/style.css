@@ -92,6 +92,162 @@ body > div.overlay {
     .header--heading {
       font-size: 2.4rem; } }
 
+.chart {
+  width: 100%;
+  height: calc(100% - 9rem);
+  display: grid;
+  grid-template-columns: repeat(9, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  grid-template-areas: "sp sp sp sp sp sp r r r" "sp sp sp sp sp sp r r r" "sp sp sp sp sp sp r r r" "d b b b b b b b f"; }
+  @media screen and (max-width: 1024px) {
+    .chart {
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: 85% 30% 30% 20%;
+      grid-template-areas: "sp sp" "r r" "b b" "d f"; } }
+  @media screen and (max-width: 768px) {
+    .chart {
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: 85% 125% 125% 20%; } }
+  @media screen and (max-width: 425px) {
+    .chart {
+      grid-template-rows: 100% 90% 90% 20%; } }
+  .chart--scatterplot {
+    grid-area: sp; }
+  .chart--right {
+    grid-area: r;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(3, 1fr); }
+    .chart--right > div:nth-of-type(2) {
+      margin-bottom: 1rem; }
+    @media screen and (max-width: 1024px) {
+      .chart--right {
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: 1fr;
+        margin-top: 1.5rem; }
+        .chart--right > div:nth-of-type(2) {
+          margin-bottom: 0; } }
+    @media screen and (max-width: 768px) {
+      .chart--right {
+        grid-template-columns: 1fr;
+        grid-template-rows: 50% 25% 25%;
+        margin-top: 2.5rem; } }
+    @media screen and (max-width: 425px) {
+      .chart--right {
+        grid-template-rows: 30% 33% 33%; } }
+  .chart--bottom {
+    grid-area: b;
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: repeat(7, 1fr);
+    align-items: center;
+    margin-top: 1.5rem; }
+    .chart--bottom__text {
+      grid-column: 1 / 2;
+      display: inline-block;
+      font-size: 1.5rem;
+      text-align: justify; }
+      @media screen and (max-width: 1280px) {
+        .chart--bottom__text {
+          font-size: 1.2rem; } }
+      @media screen and (max-width: 768px) {
+        .chart--bottom__text {
+          text-align: center;
+          font-size: 1.4rem;
+          max-width: 60%;
+          justify-self: center; } }
+      @media screen and (max-width: 375px) {
+        .chart--bottom__text {
+          max-width: 90%; } }
+    .chart--bottom__ps, .chart--bottom__cor, .chart--bottom__fr {
+      height: 100%; }
+    .chart--bottom__ps {
+      grid-column: 2 / 4; }
+    .chart--bottom__cor {
+      grid-column: 4 / 6; }
+    .chart--bottom__fr {
+      grid-column: 6 / -1; }
+    @media screen and (max-width: 768px) {
+      .chart--bottom {
+        grid-template-columns: 1fr;
+        grid-template-rows: 10% 30% 30% 30%;
+        margin-top: 2.5rem; }
+        .chart--bottom__ps, .chart--bottom__cor, .chart--bottom__fr {
+          grid-column: unset; } }
+
+.tooltip {
+  position: absolute;
+  left: -9999px;
+  box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.034), 0 6.7px 5.3px rgba(0, 0, 0, 0.048), 0 12.5px 10px rgba(0, 0, 0, 0.06), 0 22.3px 17.9px rgba(0, 0, 0, 0.072), 0 41.8px 33.4px rgba(0, 0, 0, 0.086), 0 100px 80px rgba(0, 0, 0, 0.12);
+  pointer-events: none;
+  background-color: #FAFAFA;
+  z-index: 2; }
+  .tooltip--heading {
+    padding: 1rem .75rem; }
+    @media screen and (max-width: 375px) {
+      .tooltip--heading {
+        padding: 0.5rem 0.25rem; } }
+  .tooltip--hdi, .tooltip--gov, .tooltip--info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; }
+    .tooltip--hdi p, .tooltip--gov p, .tooltip--info p {
+      font-size: 1.4rem; }
+      @media screen and (max-width: 1280px) {
+        .tooltip--hdi p, .tooltip--gov p, .tooltip--info p {
+          font-size: 1.1rem; } }
+      @media screen and (max-width: 425px) {
+        .tooltip--hdi p, .tooltip--gov p, .tooltip--info p {
+          font-size: .9rem; } }
+    .tooltip--hdi p:nth-of-type(1), .tooltip--gov p:nth-of-type(1), .tooltip--info p:nth-of-type(1) {
+      background-color: #121212;
+      color: #FAFAFA;
+      text-transform: uppercase; }
+  .tooltip--hdi p, .tooltip--gov p {
+    padding: .75rem; }
+    @media screen and (max-width: 375px) {
+      .tooltip--hdi p, .tooltip--gov p {
+        padding: 0.25rem; } }
+  .tooltip--hdi__score, .tooltip--gov__score {
+    font-weight: 700; }
+  .tooltip--info {
+    font-size: 1.4rem; }
+    .tooltip--info p {
+      padding: 1rem; }
+      @media screen and (max-width: 375px) {
+        .tooltip--info p {
+          padding: 0.5rem; } }
+    @media screen and (max-width: 1280px) {
+      .tooltip--info {
+        font-size: 1.1rem; } }
+    @media screen and (max-width: 425px) {
+      .tooltip--info {
+        font-size: .9rem; } }
+
+#scatterPlot .tooltip {
+  width: 22.5rem; }
+  @media screen and (max-width: 768px) {
+    #scatterPlot .tooltip {
+      width: 17rem; } }
+  @media screen and (max-width: 425px) {
+    #scatterPlot .tooltip {
+      width: 15rem; } }
+
+#map {
+  display: flex;
+  align-items: center;
+  justify-content: center; }
+  #map .tooltip {
+    width: 16rem; }
+    #map .tooltip--info p:nth-of-type(2) {
+      padding: .5rem; }
+    @media screen and (max-width: 768px) {
+      #map .tooltip {
+        width: 13rem; } }
+    @media screen and (max-width: 425px) {
+      #map .tooltip {
+        width: 11rem; } }
+
 .footer,
 .data {
   display: flex;
