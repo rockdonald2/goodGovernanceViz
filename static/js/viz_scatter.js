@@ -10,7 +10,7 @@
         'bottom': 30
     };
 
-    if (window.innerWidth <= 425) {
+    if (window.innerWidth <= 725) {
         margin.left = 15;
     }
 
@@ -27,7 +27,7 @@
     const scaleHdi = d3.scaleLinear().domain([0.3, 1.05]).range([height, 0]);
     let radius = 12.5;
 
-    if (window.innerWidth <= 425) {
+    if (window.innerWidth <= 725) {
         radius = 10;
     }
 
