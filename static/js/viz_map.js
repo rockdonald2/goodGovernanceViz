@@ -10,9 +10,15 @@
         'bottom': 0
     };
     const width = viz.calculateWidth(chartContainer, margin);
+    const height = viz.calculateHeight(chartContainer, margin);
+    const scale = window.innerWidth >= 1600 ? 180 : 120;
 
     /* path-projection */
-    const outline = {
+    const projection = d3.geoEquirectangular().scale(scale * (height / 525)).center([15, 15]).translate([width / 2, height / 2])
+        .precision(.1);
+    const path = d3.geoPath().projection(projection);
+
+    /* const outline = {
         'type': 'Sphere'
     };
     const projection = d3.geoEquirectangular();
@@ -26,7 +32,7 @@
             l = Math.min(Math.ceil(x1 - x0), dy);
         projection.scale(projection.scale() * (l - 1) / l).precision(0.2);
         return dy;
-    }();
+    }(); */
 
     /* svg-container and chart-holder */
     const svg = viz.makeSvg(chartContainer, width, height, margin).style('cursor', 'zoom-in');
